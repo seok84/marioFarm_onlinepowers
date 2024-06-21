@@ -1,0 +1,19 @@
+<svg id="ic_time_next" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(255,225,225,0);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <rect id="사각형_26301" data-name="사각형 26301" class="cls-1" width="48" height="48"/>
+  <path id="패스_4099" data-name="패스 4099" class="cls-2" d="M6662.7,124.25l14.844,16.743L6662.7,157.737" transform="translate(-6646.205 -116.75)"/>
+</svg>

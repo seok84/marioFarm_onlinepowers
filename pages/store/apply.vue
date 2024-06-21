@@ -1,0 +1,249 @@
+<template>
+  <section class="contents apply_contents">
+    <h2 class="screen_out">입점문의</h2>
+    <div class="tit_wrap">
+      <h3 class="tit">고객센터</h3>
+    </div>
+    <div class="customer_wrap">
+      <div class="container">
+
+        <customer-navigation active="store-apply"></customer-navigation>
+
+        <div class="form_wrap_box">
+          <form class="needs-validation" @submit.prevent="submit">
+            <ul>
+              <li class="form_area">
+                <div class="form-group">
+                  <input type="text" class="form-control box" placeholder="업체명"
+                         title="업체명" v-model="param.company" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control box" placeholder="담당자명"
+                         title="담당자명" v-model="param.userName" required>
+                </div>
+                <div class="form-group row_area">
+                  <div class="row">
+                    <div class="col-4">
+                      <select class="custom-select box" title="전화번호 첫번째자리"
+                              v-model="param.selectedNumber" required>
+                        <option disabled value="">선택</option>
+                        <option v-for="phoneCode in result.phoneCodes">{{phoneCode.label}}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" class="form-control box"
+                             placeholder="'-'없이 숫자만 입력" title="휴대폰번호"
+                             v-model="param.backPhoneNumber"
+                             @change="valid($event, validate.numberOnly)" maxlength="8"
+                             required>
+                      <div class="invalid-feedback">{{validate.numberOnlyMessage}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row_area">
+                  <div class="row">
+                    <div class="col-6">
+                      <input type="text" class="form-control box" placeholder="E-mail"
+                             title="아이디" v-model="param.emailAdd"
+                             @change="valid($event, validate.emailFirst)"
+                             required>
+                      <div class="invalid-feedback">{{validate.emailMessage}}</div>
+                    </div>
+                    <div class="col-6">
+                      <select class="custom-select box" title="이메일 주소"
+                              v-model="param.selectedEmail" required>
+                        <option disabled value="">선택</option>
+                        <option value="write">직접입력</option>
+                        <option v-for="emailCode in result.emailCodes">{{emailCode.label}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control box" placeholder="직접입력 (예 @onlinepowers.com)"
+                         title="직접입력" v-model="param.emailAddress"
+                         @change="valid($event, validate.emailLast)" :disabled="param.selectedEmail != 'write'">
+                  <div class="invalid-feedback">{{validate.emailMessage}}</div>
+                </div>
+              </li>
+
+              <li class="form_area">
+                <div class="form-group">
+                  <input type="text" class="form-control box" placeholder="홈페이지 URL"
+                         title="홈페이지 URL" v-model="param.homepage" required>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control box" placeholder="판매하고자 하는 제품"
+                         title="판매하고자 하는 제품" v-model="param.content" required>
+                </div>
+                <div class="form-group file_sel_area">
+                  <div class="sel_area">
+                    <input type="file" id="fileSelect" @change="fileSelect($event)">
+                    <label for="fileSelect" class="btn_file">파일선택</label>
+                  </div>
+                  <div class="info_dot">
+                    <p>{{fileName}}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="row no-gutters btn-group">
+              <div class="col col-md-3 col-lg-2">
+                <button type="submit" class="btn btn_lg btn_primary">저장</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import CustomerNavigation from "@/components/ui/customer-navigation";
+
+let $s, vm;
+
+export default {
+  components: {CustomerNavigation},
+  head() {
+    return {
+      script: [],
+      link: [
+        {rel: 'stylesheet', href: '/static/css/customer.css'},
+      ]
+    }
+  },
+  beforeCreate: function () {
+    $s = this.$saleson;
+    vm = this;
+  },
+  data: function () {
+    return {
+      // data    v-model 바인딩
+      param: {
+        company: '',
+        userName: '',
+
+        selectedNumber: '',
+        backPhoneNumber: '',
+        phoneNumber: '',
+        phoneNumber1: '',
+        phoneNumber2: '',
+        phoneNumber3: '',
+
+        email: '',           // 앞자리+뒷자리
+        emailAdd : '',       // 앞자리 아이디
+        selectedEmail: '',   // 뒷자리 @...
+        emailAddress: '',    // 직접입력
+
+        homepage: '',
+        content: '',
+        file : null,
+        status: '',
+      },
+
+      validate: {
+        numberOnly: $s.validator.patterns.last_phone,
+        emailFirst: $s.validator.patterns.first_email,
+        emailLast :  $s.validator.patterns.emailAt,
+
+        numberOnlyMessage: $s.validator.messages.last_phone,
+        emailMessage : $s.validator.messages.email,
+      },
+
+      result: {}
+
+    }
+  },
+  methods: {
+    // custom methods..
+    submit: function () {
+
+      var writeEmailFlag = vm.param.selectedEmail === 'write';
+      var email = '';
+      var emailAddress = vm.param.emailAddress;
+
+      if (writeEmailFlag && (typeof emailAddress == 'undefined' || emailAddress == '')) {
+        $s.alert('이메일 도메인을 입력해 주세요.');
+        return false;
+      }
+
+      if (writeEmailFlag && emailAddress.indexOf('@', 0) >= 1) {
+        $s.alert('@을 맨 앞에 입력해 주세요.');
+        return false;
+      }
+
+      if (vm.param.emailAddress != null && writeEmailFlag) {
+        email = vm.param.emailAdd + vm.param.emailAddress;
+      } else {
+        email = vm.param.emailAdd + "@" + vm.param.selectedEmail;
+      }
+
+      vm.param.email = email;
+
+      vm.param.phoneNumber
+          = vm.param.selectedNumber + "-"
+          + vm.param.backPhoneNumber.substr(0, 4) + "-"
+          + vm.param.backPhoneNumber.substr(4, 4);
+
+
+      $s.confirm('입점정보를 저장 하시겠습니까?', function() {
+
+        var formData = new FormData();
+        formData.append('company', vm.param.company);
+        formData.append('userName', vm.param.userName);
+        formData.append('phoneNumber', vm.param.phoneNumber);
+        formData.append('email', vm.param.email);
+        formData.append('homepage', vm.param.homepage);
+        formData.append('content', vm.param.content);
+        if (vm.param.file != null) {
+          formData.append('file', vm.param.file);
+        }
+
+        $s.api.createStoreInquiry(formData, function (response) {
+          if (response.status === "OK") {
+            $s.alert("입점문의가 작성되었습니다.", function() {
+              window.location.reload();
+            });
+          } else {
+            $s.alert("입점문의 저장에 실패 했습니다.");
+          }
+        });
+      });
+
+    },
+    fileSelect: function (e) {
+      vm.param.file = e.target.files[0];
+    },
+    getStoreInquiry: function () {
+      $s.api.getStoreInquiry(function (response) {
+        vm.result = response.codes;
+      });
+    }
+  },
+  computed: {
+    fileName: function () {
+      var name = '첨부파일명';
+
+      var file = this.param.file;
+
+      if (file != null) {
+        name = file.name;
+      }
+
+      return name;
+    }
+  },
+  mounted: function() {
+    this.$nextTick(function () {
+      // 페이지 로딩 후 실행
+
+      vm.getStoreInquiry();
+    });
+  }
+}
+</script>

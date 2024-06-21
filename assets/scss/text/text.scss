@@ -1,0 +1,60 @@
+/* TEXT STYLE */
+
+.screenout {
+    font-size: 0;
+    text-indent: -9999px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+.feedback {
+    position: relative;
+    font-size: 13px;
+    color: #333;
+    line-height: 1;
+    margin-top: 10px;
+    padding-left: 0.8rem;
+  
+    &::before {
+        @extend %offsetLeft;
+        content: "*";
+        font-size: inherit;
+        color: inherit;
+        line-height: inherit;
+        transform: translate(0px, 2px);
+    }
+  
+    &.valid {
+        color: #0ea5e9;
+    }
+  
+    &.invalid {
+        color: #ef4444;
+    }
+}
+  
+.text-ellipsis {
+    @include ellipsis;
+}
+
+/* item text */
+  
+.price-area {
+    font-size: 2rem;
+  
+    > span > span {
+        font-size: 1.1em;
+    }
+  
+    .price {
+        font-weight: 700;
+    }
+  
+    .saled {
+        font-size: 1.6rem;
+        color: #a9a4a1;
+        text-decoration: line-through;
+    }
+}
+  

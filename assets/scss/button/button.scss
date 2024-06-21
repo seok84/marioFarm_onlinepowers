@@ -1,0 +1,144 @@
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    height: 5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5rem;
+    font-size: 1.6rem;
+}
+
+/* ===== size ===== */
+
+.btn-small {
+    max-width: 15rem;
+}
+
+.btn-middle {
+    max-width: 20rem;
+}
+
+.btn-large {
+    max-width: 25rem;
+}
+
+/* 버튼 사이즈 */
+
+.btn-small {
+    width: 15rem;
+    height: 4rem;
+    line-height: 3.8rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.btn-middle {
+    width: 22.3rem;
+}
+
+.btn-large {
+    width: 46rem;
+    margin: 0 auto;
+}
+
+/* 버튼 색상 */
+
+.btn-default {
+    @extend .btn;
+    border: 1px solid #000;
+}
+
+.btn-black {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.btn-attention {
+    background-color: #ff5454;
+    color: #fff;
+    border-color: #ff5454;
+}
+
+.btn-primary {
+    background-color: #e7ff5e;
+    color: #000;
+    border-color: #e7ff5e;
+}
+
+.btn-gray {
+    background-color: #f5f5f5;
+    color: #000;
+    border-color: #f5f5f5;
+}
+
+.btn-secondary.readonly {
+    color: #9e9e9e;
+}
+
+.btn-line {
+    border: 1px solid #e0e0e0;
+}
+
+.btn-sub {
+    color: #9e9e9e;
+    background-color: #fbfbfc;
+    border: 1px solid #d9d9d9;
+}
+
+.btn-disabled {
+    color: #ffffff;
+    background-color: #b9b9b9;
+    border-color: transparent;
+    cursor: default;
+}
+
+/* 버튼 색상 - 호버 */
+
+.btn-default:hover {
+    color: #fff;
+    border-color: #000;
+    background-color: #000;
+}
+
+.btn-black:hover {
+    color: #fff;
+    border-color: #b9b9b9;
+    background-color: #b9b9b9;
+}
+
+.btn-attention:hover, .btn-primary:hover, .btn-sub:hover, .btn-line:hover, .btn-gray:hover {
+    color: #fff;
+    border-color: #000;
+    background-color: #000;
+}
+
+/* 버튼 배치 */
+
+.btn-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .btn {
+        margin-right: 1rem;
+
+        &:last-child {
+        margin-right: 0;
+        }
+    }
+}
+
+
+
+.btn-large {
+    @include mobile {
+        width: 100%;
+    }
+}
+

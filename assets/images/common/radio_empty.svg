@@ -1,0 +1,22 @@
+<svg id="구성_요소_165_2" data-name="구성 요소 165 – 2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #000;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="사각형_27405" data-name="사각형 27405" class="cls-1">
+    <rect class="cls-2" width="24" height="24" rx="12"/>
+    <rect class="cls-3" x="0.5" y="0.5" width="23" height="23" rx="11.5"/>
+  </g>
+</svg>

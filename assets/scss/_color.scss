@@ -1,0 +1,67 @@
+/* ===== color ===== */
+$primary: #F02D40;
+$secondary: #DA0015;
+$tertiary: #FF7784;
+$accent: #dc2626;
+$valid: #0ea5e9;
+$invalid: #ef4444;
+
+/* Mono */
+$mono-100: #fff;
+$mono-200:#eee;
+$mono-300:#E1E1E1;
+$mono-400:#B2B2B2;
+$mono-500:#979797;
+$mono-600:#757575;
+$mono-700:#333;
+$mono-900: #000;
+
+
+/* ===== form ===== */
+$form-height: 4rem;
+
+/* ===== button ===== */
+$btn-height: 5rem;
+
+/* ===== font-size ===== */
+/* Title */
+$font-title-1: 2.8rem;
+$font-title-2: 2.4rem;
+$font-title-3: 2.2rem;
+
+/* Body Text */
+$font-body-1: 1.6rem;
+$font-body-2: 1.4rem;
+$font-body-3: 1.2rem;
+  
+/* Description */
+$font-desc-1: 1rem;
+
+/* Information */
+$font-info-1: 1rem;
+
+/* ===== radius ===== */
+$radius-01: 1rem;
+
+@media (max-width: 767px) {
+    /* ===== font-size ===== */
+    /* Title */
+    $font-title-1: 2.4rem;
+    $font-title-2: 2.2rem;
+    $font-title-3: 2rem;
+
+    /* Body Text */
+    $font-body-1: 1.4rem;
+    $font-body-2: 1.2rem;
+    $font-body-2: 1.2rem;
+
+    /* Description */
+    $font-desc-1: 0.9rem;
+
+    /* Information */
+    $font-info-1: 0.9rem;
+
+    /* ===== radius ===== */
+    $radius-01: 0.5rem;
+}
+

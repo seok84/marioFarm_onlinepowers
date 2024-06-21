@@ -1,0 +1,108 @@
+body {
+  font-size: 1.4rem;
+}
+
+.inner {
+  max-width: 120rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* ===== display ===== */
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* flexbox layout */
+
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+
+  > div[class^="flex"] {
+    display: inline-flex;
+  }
+
+  div.flex-none {
+    width: 100%;
+    flex: none;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+/* gap 대체 스타일 */
+
+.gap-wrap {
+  margin: 0 -1.5rem;
+
+  /* box 양옆 여백만큼 마이너스 */
+
+  .box {
+    padding: 0 1.5rem;
+
+    /* box 양옆 여백*/
+  }
+}
+
+/* flex-nowrap */
+
+.flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+
+  &.gap-wrap {
+    margin: 0;
+    padding: 0 0 3rem;
+  }
+
+  .box {
+    flex: none;
+  }
+
+  &.gap-wrap .box {
+    padding: 0 3rem 0 0;
+
+    &:last-child {
+      padding: 0;
+    }
+  }
+}
+
+/* =============== */
+/* ==== 반응형 ==== */
+/* =============== */
+
+@media (min-width: 1200px) {
+  .inner {
+    padding: 0;
+  }
+}

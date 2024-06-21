@@ -1,0 +1,50 @@
+/* placeholders */
+%img {
+    width: $full; 
+    vertical-align: top;
+}
+
+%offsetLeft {
+    position: $offset; 
+    top: 0; 
+    left: 0;
+}
+
+%offsetRight {
+    position: $offset; 
+    top: 0; 
+    right: 0;
+}
+
+%offsetBottomLeft {
+    position: $offset;
+    bottom: 0;
+    left: 0;
+}
+
+%offsetBottomRright {
+    position: $offset; 
+    bottom: 0; 
+    right: 0;
+}
+
+%offseteCenter {
+    position: $offset; 
+    top: $half; 
+    left: $half; 
+    transform: translate(-$half, -$half);
+}
+
+%after {
+    &:after 
+    {
+        content: ''; 
+        clear: both; 
+        display: block;
+    }
+}
+
+%textHidden {
+    font-size: 0; 
+    text-indent: -9999px;
+}

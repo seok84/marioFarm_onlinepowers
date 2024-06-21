@@ -1,0 +1,53 @@
+/* mixin */
+@mixin ellipsis($lines: 1) {
+    @if ($lines == 1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@mixin round($arc) {
+    border-radius: $arc;
+}
+
+@mixin rotate($arc) {
+    transform: rotate($arc);
+}
+
+/* 버튼 */
+@mixin button($size, $radius: 0) {
+    width: $size;
+    height: $size;
+
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+}
+
+/* 반응형, 브라우저 크기가 767px 이하일때 */
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    }
+}
+
+/* 반응형, 브라우저 크기가 768이상, 1023px 이하일때 */
+@mixin tablet {
+    @media (min-width: $mobile+1) and (max-width: $tablet) {
+        @content;
+    }
+}
+
+/* 반응형, 브라우저 크기가 1024px 이상일때 */
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}

@@ -1,0 +1,372 @@
+/* reset */
+* {
+    box-sizing: border-box;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+html,
+body {
+    font-size: 62.5%;
+    /* 10px */
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* ####################################################################################################  */
+/* 추가 설정  */
+html,
+body {
+    /* rem 사용 html 기본 폰트 사이즈 */
+    font-size: 62.5%;
+    /* 10px */
+    letter-spacing: -0.065rem;
+    word-spacing: -0.065rem;
+
+    /* 아이폰 노치 영역 대응  */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    padding-left: constant(safe-area-inset-left);
+    padding-right: constant(safe-area-inset-right);
+    padding-top: constant(safe-area-inset-top);
+    padding-bottom: constant(safe-area-inset-bottom);
+}
+
+html {
+    /*height: -webkit-fill-available;*/
+
+    /* 익스플로러 IE 10 확대 제어 */
+    -ms-content-zooming: none;
+    -ms-touch-action: pan-x pan-y;
+}
+
+body {
+    line-height: 1;
+
+    /* iOS only */
+    /*height: -webkit-fill-available;*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a,
+a:active,
+a:focus,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+}
+
+a,
+a:active,
+a:focus,
+a:visited {
+    color: unset;
+}
+
+:focus {
+    outline: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Fieldset reset */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Legend reset */
+legend {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+}
+
+/* input reset */
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear {
+    display: none;
+}
+
+/* input type number 에서 화살표 제거 */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+/* select box reset */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* IE 에서 select box 화살표 제거 */
+select::-ms-expand {
+    display: none;
+}
+
+/* button style reset */
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    cursor: pointer;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+[hidden] {
+    display: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* 크롬에서 안될 상황 대비 ios 노치 대응 */
+    /*height: -webkit-fill-available;*/
+}
+
+/* iOS 관련 */
+input,
+button {
+    /* ios 기본 라운딩 값 리셋 */
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+header {
+    /* 아이폰 노치 영역 대응  */
+    padding-left: constant(safe-area-inset-left);
+    padding-right: constant(safe-area-inset-right);
+
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
+footer {
+    /* 아이폰 노치 영역 대응  */
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-left: constant(safe-area-inset-left);
+    padding-right: constant(safe-area-inset-right);
+
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
+
+/* 노트북 */
+@media (max-width: 1024px) {
+    html,
+    body {
+        font-size: 50%;
+    }
+
+}
+
+/* 태블릿 */
+@media (max-width: 768px) {
+    html,
+    body {
+        font-size: 50%;
+    }
+}
+
+/* 모바일 */
+@media (max-width: 480px) {
+    html,
+    body {
+        font-size: 62.5%;
+    }
+
+    body {
+        /* ios 노치 대응 */
+        /*height: -webkit-fill-available;*/
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
